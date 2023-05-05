@@ -170,8 +170,6 @@ class LinkedList:
         # If value wasn't found
         return False
 
-
-
     def count(self, value: object) -> int:
         """
         This method counts the number of elements in the list
@@ -182,12 +180,11 @@ class LinkedList:
         count = 0
         node = self._head
 
-        # Iterated through until value equals value of node
+        # Iterates through until value equals value of node
         while node.next:
 
             # If found, add 1 to count
             if node.next.value == value:
-                print(node.next.value)
                 count += 1
 
             node = node.next
@@ -196,9 +193,21 @@ class LinkedList:
 
     def find(self, value: object) -> bool:
         """
-        TODO: Write this implementation
+        This method returns a Boolean value based on whether or not the provided “value” object
+        exists in the list
         """
-        pass
+
+        node = self._head
+
+        # Returns True if value is found
+        while node.next:
+            if node.next.value == value:
+                return True
+
+            node = node.next
+
+        # False if not
+        return False
 
     def slice(self, start_index: int, size: int) -> "LinkedList":
         """
