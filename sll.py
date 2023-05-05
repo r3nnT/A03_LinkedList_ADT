@@ -102,21 +102,75 @@ class LinkedList:
 
     def insert_at_index(self, index: int, value: object) -> None:
         """
-        TODO: Write this implementation
+        his method inserts a new value at the specified index position in the linked list
         """
-        pass
+
+        # Checks if index is invalid, raises an Exception
+        if index < 0 or index > self.length():
+            raise SLLException
+
+        # Sets new_node to value
+        # Sets node to the head to be able to iterate the SLL
+        new_node = SLNode(value)
+        node = self._head
+
+        # Sets node to the next node index number of times
+        for i in range(index):
+            node = node.next
+
+        # Once desired index is reached, sets the next attributes of the nodes
+        new_node.next = node.next
+        node.next = new_node
 
     def remove_at_index(self, index: int) -> None:
         """
-        TODO: Write this implementation
+        This method removes the node at the specified
+        index position from the linked list.
         """
-        pass
+
+        # Checks for valid index
+        if index < 0 or index >= self.length():
+            raise SLLException
+
+        # Sets the node to head of the SLL
+        node = self._head
+
+        # Iterates through the list until it
+        # finds the node before the removal
+        for i in range(index):
+            node = node.next
+
+        # Sets the nodes next attribute to the node after the one being removed
+        node.next = node.next.next
+
+
+
 
     def remove(self, value: object) -> bool:
         """
-        TODO: Write this implementation
+        This method traverses the list from the beginning to the end,
+        and removes the first node that matches the provided “value” object
         """
-        pass
+        # Sets node to head of the list
+        node = self._head
+
+        # Iterates through the SLL
+        while node.next:
+
+            # Checks if nodes value is equal to the given value
+            if node.next.value == value:
+
+                # if yes, resets the currents nodes next attribute
+                # to the matching nodes next
+                node.next = node.next.next
+                return True
+
+            node = node.next
+
+        # If value wasn't found
+        return False
+
+
 
     def count(self, value: object) -> int:
         """
