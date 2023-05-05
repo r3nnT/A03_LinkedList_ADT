@@ -211,9 +211,36 @@ class LinkedList:
 
     def slice(self, start_index: int, size: int) -> "LinkedList":
         """
-        TODO: Write this implementation
+        This method returns a new LinkedList object that contains the
+        requested number of nodes from the original list, starting with the
+        node located at the requested start index.
         """
-        pass
+
+        # Checks for valid bounds for slicing
+        if start_index < 0 \
+                or start_index >= self.length() \
+                or size < 0 \
+                or size > self.length():
+            raise SLLException
+
+        # Node is set as the first node in the list
+        node = self._head.next
+
+        # LinkedList obj created to store the desired slice
+        slice_list = LinkedList()
+
+        # Iterated to find desired index to begin slice
+        for i in range(start_index):
+            node = node.next
+
+        # Iterates over the next nodes, inserts each of those values
+        # into the newly created LinkedList obj
+        for i in range(size):
+            slice_list.insert_back(node.value)
+            node = node.next
+
+        return slice_list
+
 
 
 if __name__ == "__main__":
