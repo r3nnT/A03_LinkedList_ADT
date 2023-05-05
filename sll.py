@@ -4,8 +4,6 @@
 # Assignment:
 # Due Date:
 # Description:
-
-
 from SLNode import *
 
 
@@ -69,15 +67,38 @@ class LinkedList:
 
     def insert_front(self, value: object) -> None:
         """
-        TODO: Write this implementation
+        This method adds a new node at the beginning of the list
+        (right after the front sentinel)
         """
-        pass
+        # Create a new node using the provided value
+        node = SLNode(value)
+
+        # Set the next attribute of the new node to the current first node
+        # in the list
+        node.next = self._head.next
+
+        # Set next attribute of the front sentinel to new node
+        self._head.next = node
+
 
     def insert_back(self, value: object) -> None:
         """
-        TODO: Write this implementation
+        This method adds a new node at the end of the list
         """
-        pass
+
+        # Create a new node using the provided value
+        new_node = SLNode(value)
+
+        # Sets node to the head of the list
+        node = self._head
+
+        # Traverses the list until it finds the last node
+        while node.next:
+            node = node.next
+
+        # Once the end is reached, sets the next attribute of the
+        # last node to the new_node
+        node.next = new_node
 
     def insert_at_index(self, index: int, value: object) -> None:
         """
