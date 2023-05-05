@@ -217,10 +217,9 @@ class LinkedList:
         """
 
         # Checks for valid bounds for slicing
-        if start_index < 0 \
-                or start_index >= self.length() \
-                or size < 0 \
-                or size > self.length():
+        if start_index < 0 or start_index >= self.length():
+            raise SLLException
+        if size < 0 or size > self.length():
             raise SLLException
 
         # Node is set as the first node in the list
