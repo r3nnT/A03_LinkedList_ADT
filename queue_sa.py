@@ -1,8 +1,8 @@
-# Name:
-# OSU Email:
+# Name: Tyler Renn
+# OSU Email: rennt@oregonstate.edu
 # Course: CS261 - Data Structures
-# Assignment:
-# Due Date:
+# Assignment: A03
+# Due Date: 05/08/2023 @ 11:59 PM
 # Description:
 
 
@@ -68,21 +68,76 @@ class Queue:
 
     def enqueue(self, value: object) -> None:
         """
-        TODO: Write this implementation
+        This method adds a new value to the end of the queue.
         """
-        pass
+
+        if self._current_size == self._sa.length():
+            new_length = 2 * self._sa.length()
+            new_sa = StaticArray(new_length)
+
+            # Copy elements from old array to new array
+            for i in range(self._current_size):
+                new_sa[i] = self._sa[(self._front + i) % self._sa.length()]
+
+            # Replaces old array with new
+            self._sa = new_sa
+
+            # Resets front and back
+            self._front = 0
+            self._back = self._current_size - 1
+
+        # Increment the back then add the value to the end of the queue
+        self._back = (self._back + 1) % self._sa.length()
+        self._sa[self._back] = value
+
+        # Update current size
+        self._current_size += 1
 
     def dequeue(self) -> object:
         """
-        TODO: Write this implementation
+        This method removes and returns the value at the beginning of the queue.
         """
-        pass
+        # Checks if Queue is empty
+        if self._current_size == 0:
+            raise QueueException("Queue is empty")
+
+        # Shrink array if less than 25% full
+        if self._current_size < self._sa.length() // 4:
+
+            # Create a new StaticArray half the size of the current one
+            new_sa = StaticArray(self._sa.length() // 2)
+
+            # Copy over the elements to the new array using a circular buffer
+            for i in range(self._current_size):
+                new_sa[i] = self._sa[(self._front + i) % self._sa.length()]
+
+                # Replaces old array with new
+                self._sa = new_sa
+
+                # Resets the front and back
+                self._front = 0
+                self._back = self._current_size - 1
+
+        # Obtains value to dequeue
+        value = self._sa[self._front]
+
+        # Update front and current size
+        self._front = (self._front + 1) % self._sa.length()
+        self._current_size -= 1
+
+        return value
 
     def front(self) -> object:
         """
-        TODO: Write this implementation
+        This method returns the value of the
+        front element of the queue without removing it
         """
-        pass
+
+        # Checks if queue is empty
+        if self._current_size == 0:
+            raise QueueException("Queue is empty")
+
+        return self._sa[self._front]
 
     # The method below is optional, but recommended, to implement. #
     # You may alter it in any way you see fit.                     #

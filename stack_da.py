@@ -1,8 +1,8 @@
-# Name:
-# OSU Email:
+# Name: Tyler Renn
+# OSU Email: rennt@oregonstate.edu
 # Course: CS261 - Data Structures
-# Assignment:
-# Due Date:
+# Assignment: A03
+# Due Date: 05/08/2023 @ 11:59 PM
 # Description:
 
 

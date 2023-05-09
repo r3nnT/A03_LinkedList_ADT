@@ -1,8 +1,8 @@
-# Name:
-# OSU Email:
+# Name: Tyler Renn
+# OSU Email: rennt@oregonstate.edu
 # Course: CS261 - Data Structures
-# Assignment:
-# Due Date:
+# Assignment: A03
+# Due Date: 05/08/2023 @ 11:59 PM
 # Description:
 from SLNode import *
 
@@ -239,7 +239,7 @@ class LinkedList:
             node = node.next
 
         return slice_list
-    
+
 if __name__ == "__main__":
 
     print("\n# insert_front example 1")
