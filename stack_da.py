@@ -52,18 +52,23 @@ class Stack:
 
     def push(self, value: object) -> None:
         """
-        TODO: Write this implementation
+        This method adds a new element to the top of the stack
         """
+        # Adds the element the end of the array
         self._da.append(value)
 
     def pop(self) -> object:
         """
-        TODO: Write this implementation
+        his method removes the top element from the stack and returns its value
         """
+        # Checks if array is empty
         if self.is_empty():
             raise StackException
 
+        # Sets the top of the stack to the last element
         top = self._da.get_at_index(self._da.length()-1)
+
+        # Removes the last element
         self._da.remove_at_index(self._da.length()-1)
 
         return top
