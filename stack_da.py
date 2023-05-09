@@ -62,7 +62,7 @@ class Stack:
         his method removes the top element from the stack and returns its value
         """
         # Checks if array is empty
-        if self.is_empty():
+        if self._da.is_empty():
             raise StackException
 
         # Sets the top of the stack to the last element
@@ -80,7 +80,7 @@ class Stack:
         """
 
         # Checks if array is empty
-        if self.is_empty():
+        if self._da.is_empty():
             raise StackException
 
         return self._da.get_at_index(self._da.length()-1)
