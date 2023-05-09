@@ -73,14 +73,12 @@ class Stack:
 
         return top
 
-
-
-
     def top(self) -> object:
         """
-        TODO: Write this implementation
+        This method returns the value of the
+        top element of the stack without removing it
         """
-        pass
+        return self._da.get_at_index(self._da.length()-1)
 
 
 # ------------------- BASIC TESTING -----------------------------------------
