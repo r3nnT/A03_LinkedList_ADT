@@ -60,7 +60,16 @@ class Stack:
         """
         TODO: Write this implementation
         """
-        pass
+        if self.is_empty():
+            raise StackException
+
+        top = self._da.get_at_index(self._da.length()-1)
+        self._da.remove_at_index(self._da.length()-1)
+
+        return top
+
+
+
 
     def top(self) -> object:
         """
