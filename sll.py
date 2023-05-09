@@ -239,9 +239,7 @@ class LinkedList:
             node = node.next
 
         return slice_list
-
-
-
+    
 if __name__ == "__main__":
 
     print("\n# insert_front example 1")
