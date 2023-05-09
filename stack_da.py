@@ -78,6 +78,11 @@ class Stack:
         This method returns the value of the
         top element of the stack without removing it
         """
+
+        # Checks if array is empty
+        if self.is_empty():
+            raise StackException
+
         return self._da.get_at_index(self._da.length()-1)
 
 
