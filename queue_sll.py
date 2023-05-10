@@ -66,19 +66,52 @@ class Queue:
         """
         TODO: Write this implementation
         """
-        pass
+
+        size = self.size()
+        new_node = SLNode(value)
+        if self.is_empty():
+            self._head = new_node
+            self._tail = new_node
+        else:
+            self._tail.next = new_node
+            self._tail = new_node
+        size += 1
 
     def dequeue(self) -> object:
         """
         TODO: Write this implementation
         """
-        pass
+
+        size = self.size()
+
+        # Checks if top of Stack is None
+        if self._head is None:
+            raise QueueException
+
+        # Get value of the top element
+        value = self._head.value
+
+        # Update top of next element in the stack
+        self._head = self._head.next
+
+        # Decrement size of stack
+        size -= 1
+
+        return value
+
+        if self.is_empty():
+            self.tail = None
+
+        return value
 
     def front(self) -> object:
         """
         TODO: Write this implementation
         """
-        pass
+        if self._head is None:
+            raise QueueException
+
+        return self._head.value
 
 
 # ------------------- BASIC TESTING -----------------------------------------
