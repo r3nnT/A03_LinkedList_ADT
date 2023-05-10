@@ -143,9 +143,6 @@ class LinkedList:
         # Sets the nodes next attribute to the node after the one being removed
         node.next = node.next.next
 
-
-
-
     def remove(self, value: object) -> bool:
         """
         This method traverses the list from the beginning to the end,

@@ -105,13 +105,12 @@ class Queue:
         if self._current_size < self._sa.length() // 4:
 
             # Create a new StaticArray half the size of the current one
-            new_sa = StaticArray(self._sa.length() // 2)
+            new_sa = StaticArray(self._sa.length())
 
             # Copy over the elements to the new array using a circular buffer
             for i in range(self._current_size):
                 new_sa[i] = self._sa[(self._front + i) % self._sa.length()]
 
-                # Replaces old array with new
                 self._sa = new_sa
 
                 # Resets the front and back
