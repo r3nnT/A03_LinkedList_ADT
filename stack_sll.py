@@ -63,21 +63,34 @@ class Stack:
 
     def push(self, value: object) -> None:
         """
-        TODO: Write this implementation
+        This method adds a new element to the top of the stack
         """
-        pass
+        self._head = SLNode(value, self._head)
 
     def pop(self) -> object:
         """
-        TODO: Write this implementation
+        his method removes the top element
+        from the stack and returns its value.
         """
-        pass
+        size = self.size()
+
+        if self._head is None:
+            raise StackException
+
+        value = self._head.value
+        self._head = self._head.next
+        size -= 1
+        return value
 
     def top(self) -> object:
         """
-        TODO: Write this implementation
+        This method returns the value of the
+        top element of the stack without removing it
         """
-        pass
+        if self._head is None:
+            raise StackException
+
+        return self._head.value
 
 # ------------------- BASIC TESTING -----------------------------------------
 
