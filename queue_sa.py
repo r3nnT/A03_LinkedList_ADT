@@ -79,6 +79,7 @@ class Queue:
             for i in range(self._current_size):
                 new_sa[i] = self._sa[(self._front + i) % self._sa.length()]
 
+            self.print_underlying_sa()
             # Replaces old array with new
             self._sa = new_sa
 
@@ -97,27 +98,27 @@ class Queue:
         """
         This method removes and returns the value at the beginning of the queue.
         """
-        # Checks if Queue is empty
         if self._current_size == 0:
             raise QueueException("Queue is empty")
 
-        # Shrink array if less than 25% full
+            # Shrink array if less than 25% full
         if self._current_size < self._sa.length() // 4:
 
             # Create a new StaticArray half the size of the current one
-            new_sa = StaticArray(self._sa.length())
+            new_sa = StaticArray(self._sa.length() // 2)
 
             # Copy over the elements to the new array using a circular buffer
             for i in range(self._current_size):
                 new_sa[i] = self._sa[(self._front + i) % self._sa.length()]
 
+                # Replaces old array with new
+                self._sa = new_sa
+
                 # Resets the front and back
                 self._front = 0
                 self._back = self._current_size - 1
 
-                self._sa = new_sa
-
-        # Obtains value to dequeue
+            # Obtains value to dequeue
         value = self._sa[self._front]
 
         # Update front and current size
