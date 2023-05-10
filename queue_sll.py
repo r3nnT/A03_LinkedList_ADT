@@ -64,34 +64,45 @@ class Queue:
 
     def enqueue(self, value: object) -> None:
         """
-        TODO: Write this implementation
+        This method adds a new value to the end of the queue.
         """
 
+        # Get the current size
         size = self.size()
+
+        # Create a new node to hold value
         new_node = SLNode(value)
+
+        # If the queue is empty, set the head and tail to the new node
         if self.is_empty():
             self._head = new_node
             self._tail = new_node
+
+        # If the queue is not empty, add the new node to the end
+        # Update the tail
         else:
             self._tail.next = new_node
             self._tail = new_node
+
+        # Update the size of the queue
         size += 1
 
     def dequeue(self) -> object:
         """
-        TODO: Write this implementation
+        This method removes and returns the
+        value from the beginning of the queue.
         """
 
         size = self.size()
 
-        # Checks if top of Stack is None
+        # Checks if top of Queue is None
         if self._head is None:
             raise QueueException
 
         # Get value of the top element
         value = self._head.value
 
-        # Update top of next element in the stack
+        # Update top of next element in the Queue
         self._head = self._head.next
 
         # Decrement size of stack
@@ -106,7 +117,8 @@ class Queue:
 
     def front(self) -> object:
         """
-        TODO: Write this implementation
+        This method returns the value of the
+        front element of the queue without removing it
         """
         if self._head is None:
             raise QueueException
