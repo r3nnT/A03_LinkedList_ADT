@@ -111,13 +111,11 @@ class Queue:
             for i in range(self._current_size):
                 new_sa[i] = self._sa[(self._front + i) % self._sa.length()]
 
-
-
                 # Resets the front and back
                 self._front = 0
                 self._back = self._current_size - 1
 
-            self._sa = new_sa
+                self._sa = new_sa
 
         # Obtains value to dequeue
         value = self._sa[self._front]
