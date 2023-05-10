@@ -72,14 +72,22 @@ class Stack:
         his method removes the top element
         from the stack and returns its value.
         """
+        # Create a variable for size
         size = self.size()
 
+        # Checks if top of Stack is None
         if self._head is None:
             raise StackException
 
+        # Get value of the top element
         value = self._head.value
+
+        # Update top of next element in the stack
         self._head = self._head.next
+
+        # Decrement size of stack
         size -= 1
+
         return value
 
     def top(self) -> object:
