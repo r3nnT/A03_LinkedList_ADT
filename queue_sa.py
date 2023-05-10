@@ -111,7 +111,6 @@ class Queue:
             for i in range(self._current_size):
                 new_sa[i] = self._sa[(self._front + i) % self._sa.length()]
 
-                self._sa = new_sa
 
                 # Resets the front and back
                 self._front = 0
